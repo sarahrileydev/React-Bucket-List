@@ -1,25 +1,47 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+
+import "./App.css";
+import BucketList from "./Components/BucketList";
+
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      bucket: [
+        {
+          dream: "Move to the PNW",
+          id: 111,
+          completed: false
+        },
+        {
+          dream: "Mountain bike in Montana",
+          id: 222,
+          completed: false
+        },
+        {
+          dream: "Hike the John Muir Trail",
+          id: 333,
+          completed: false
+        },
+        {
+          dream: "Visit the Redwoods",
+          id: 444,
+          completed: false
+        }
+      ]
+    };
+  }
+
+
   render() {
+    console.log(this.state);
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+          <h1>This is my App.</h1>
         </header>
+        <BucketList bucket={this.state.bucket}/> 
       </div>
     );
   }
