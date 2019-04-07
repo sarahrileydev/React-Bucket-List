@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import "./App.css";
 import BucketList from "./Components/BucketList";
+import BucketForm from "./Components/BucketForm";
 
 
 class App extends Component {
@@ -33,14 +34,27 @@ class App extends Component {
     };
   }
 
+  addInput = (event, item) => {
+    event.preventDefault();
+    const newInput = {
+      dream: item,
+      id: Date.now(),
+      completed: false 
+    };
+    this.setState({ 
+      bucket: [newInput, ...this.state.bucket]
+     });
+  }
+
 
   render() {
     console.log(this.state);
     return (
       <div className="App">
         <header className="App-header">
-          <h1>This is my App.</h1>
+      
         </header>
+        <BucketForm addInput={this.addInput}/>
         <BucketList bucket={this.state.bucket}/> 
       </div>
     );
